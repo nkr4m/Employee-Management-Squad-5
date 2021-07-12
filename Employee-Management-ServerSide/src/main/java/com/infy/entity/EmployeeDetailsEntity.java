@@ -14,6 +14,7 @@ private String firstName;
 private String surName;
 private String emailId;
 private Integer courseId;
+//relationship
 @OneToMany(cascade = CascadeType.ALL)
 @JoinColumn(name = "courseId")
 private List<CoursesEntity> coursesEntities=new ArrayList<>();
