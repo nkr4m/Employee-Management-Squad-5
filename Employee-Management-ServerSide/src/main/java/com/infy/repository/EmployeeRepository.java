@@ -1,5 +1,9 @@
 package com.infy.repository;
 
-public interface EmployeeRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.infy.entity.EmployeeDetailsEntity;
+
+public interface EmployeeRepository extends JpaRepository<EmployeeDetailsEntity, Integer> {
 
 }

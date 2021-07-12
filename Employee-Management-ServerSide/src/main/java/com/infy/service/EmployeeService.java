@@ -1,5 +1,10 @@
 package com.infy.service;
 
-public interface EmployeeService {
+import java.util.List;
 
+import com.infy.dto.EmployeeDTO;
+
+public interface EmployeeService {
+public List<EmployeeDTO> getAllEmployees();
+public EmployeeDTO getEmployee(Integer employeeId);
 }
