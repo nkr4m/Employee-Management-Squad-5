@@ -1,0 +1,3 @@
+install these packages before run your code 
+ng add @angular/material
+npm i ngx-pagination
