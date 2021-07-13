@@ -1,0 +1,39 @@
+<div fxLayoutAlign="center center" fxFlexFill class="div">
+    <mat-card fxFlex="30">
+        <mat-toolbar color="primary">Register Page</mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="form" name="registerForm" [formGroup]="registerForm" (ngsubmit)="register()"  >
+            <mat-form-field>
+                <mat-label>firstName</mat-label>
+                <input matInput type="text" placeholder="firstName" formControlName="firstName">
+                <mat-error *ngIf="registerForm.controls.firstName.errors?.required && registerForm.controls.firstName.touched" class="text-danger">Field Required</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>lastName</mat-label>
+                <input matInput type="text" placeholder="lastName" formControlName="lastName">
+                <mat-error *ngIf="registerForm.controls.lastName.errors?.required && registerForm.controls.lastName.touched" class="text-danger">Field Required</mat-error>
+              </mat-form-field>
+            
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput type="text" placeholder="Email" formControlName="email">
+              <mat-error *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.touched" class="text-danger">Field Required</mat-error>
+              <mat-error *ngIf="registerForm.controls.email.errors?.pattern" class="text-danger" id="emailError">Enter valid Email</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field >
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="password" formControlName="password" required>
+              <mat-error *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.touched" class="text-danger">Field Required</mat-error>
+              <mat-error *ngIf="registerForm.controls.password.errors?.pattern" class="text-danger" id="PasswordError">Password contains one Capital leeter and small and special characters and total of 8 charecter</mat-error>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button type="submit"[disabled]=!registerForm.valid (click)="register()">Register</button>
+            <br>
+            <br>
+            <a class="link" (click)="getLoginPage()"  tabindex="5">Click here to login</a>
+          </form>
+          
+    </mat-card>
+
+</div>

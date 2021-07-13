@@ -1,0 +1,9 @@
+.div mat-card{
+padding: 0px;
+}
+.form{
+padding: 45px;
+}
+mat-card:hover{
+    transition: all;
+}

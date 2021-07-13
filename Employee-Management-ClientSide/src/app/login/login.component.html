@@ -1,0 +1,32 @@
+<div fxLayoutAlign="center center" fxFlexFill class="div">
+    <mat-card fxFlex="30" style="height: auto ;">
+        <mat-toolbar color="primary">Login Page</mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="form" name="loginForm" [formGroup]="loginForm" (ngsubmit)="login()"  >
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput type="text" placeholder="Email" formControlName="email">
+              <mat-error *ngIf="loginForm.controls.email.errors?.required && loginForm.controls.email.touched" class="text-danger">Field Required</mat-error>
+              <mat-error *ngIf="loginForm.controls.email.errors?.pattern" class="text-danger" id="emailError">Enter valid Email</mat-error>
+            </mat-form-field>
+
+            <br>
+          
+            <mat-form-field >
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="password"  [type]="hide ? 'password' : 'text'" formControlName="password" required/>
+              <button mat-icon-button matSuffix (click)="hide = !hide" 
+              [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched" class="text-danger">Field Required</mat-error>
+              <mat-error *ngIf="loginForm.controls.password.errors?.pattern" class="text-danger" id="PasswordError">Password contains one Capital leeter and small and special characters and total of 8 charecter</mat-error>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button type="submit"[disabled]=!loginForm.valid (click)="login()" (keyup.enter)="login()">Login</button>
+            <br>
+            <a class="link" (click)="getRegisterPage()"  tabindex="5">Click here to register</a>
+          </form>
+          
+    </mat-card>
+
+</div>

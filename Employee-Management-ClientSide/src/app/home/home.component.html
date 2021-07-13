@@ -1,0 +1,45 @@
+<mat-toolbar class=" header fixed-top toolbar navbar navbar-expand-md new text-black">
+    <button mat-icon-button #navbarToggler class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" (click)="isShown = !isShown" [attr.aria-expanded]="isShown" aria-label="Toggle navigation">
+        <mat-icon>home</mat-icon>
+    </button>
+    <button mat-button matTooltip="Employee Details" class="navbar-brand" *ngIf="userLoggedIn;else log" [routerLink]="['/employee']" matTooltip="Employee Details"
+        matTooltipPosition="below" matTooltipClass="mat-tooltip">Employee Details
+    </button>
+    <br>
+    <ng-template #log>
+        <button mat-button matTooltip="Employee Details" class="navbar-brand" (click)="viewSnack2()" matTooltip="Employee Details" matTooltipPosition="below"
+            matTooltipClass="mat-tooltip">Employee Details
+        </button>
+    </ng-template>
+    <br>
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': isShown }" id="navbarSupportedContent">
+       
+        <button mat-button matTooltip="courses" class="nav-link" *ngIf="userLoggedIn;else err" [routerLink]="['/courses']" matTooltip="Courses"
+        matTooltipPosition="below" matTooltipClass="mat-tooltip">Courses
+    </button>
+    <br>
+    <ng-template #err>
+        <button mat-button matTooltip="courses" class="nav-link" (click)="viewSnack1()" matTooltip="Courses" matTooltipPosition="below"
+            matTooltipClass="mat-tooltip">Courses
+        </button>
+    </ng-template>   
+        <button mat-button matTooltip="profile" class="nav-link" *ngIf="userLoggedIn;else go" [routerLink]="['/profile']" matTooltip="User Profile"
+            matTooltipPosition="below" matTooltipClass="mat-tooltip">
+            <mat-icon>person</mat-icon>
+        </button>
+        <br>
+        <ng-template #go>
+            <button mat-button matTooltip="profile" class="nav-link" (click)="viewSnack()" matTooltip="User Profile" matTooltipPosition="below"
+                matTooltipClass="mat-tooltip">
+                <mat-icon>person</mat-icon>
+            </button>
+        </ng-template>
+        <button mat-button [routerLink]="['/login']" class="nav-link" (click)="login()" *ngIf="!email" matTooltip="Login"
+            matTooltipPosition="below" matTooltipClass="mat-tooltip">SIGN IN</button>
+        <button mat-button *ngIf="email" class="nav-link" (click)="signout()">SIGN OUT</button>
+        <br>
+    </div>
+</mat-toolbar>
+
+
