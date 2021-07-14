@@ -5,7 +5,7 @@
     </button>
   </nav> 
  
-<div class="whole">
+<!-- <div class="whole">
     <div fxlayout="row wrap" fxLayoutGap="16px">
         <div fxFlex="25">
             <mat-card class="content mat-elevation-z6">
@@ -95,4 +95,46 @@
         
     </div>
 
+</div> -->
+
+<div>
+    <h1 class="text-center text-Primary">
+        All Available Courses
+    </h1>
 </div>
+
+<div class="row">
+    <div class="col-md-3" *ngFor="let c of courses">
+        <div fxlayout="row wrap" fxLayoutGap="16px">
+        <mat-card class="example-card card-shadow content mat-elevation-z6 " >
+            <mat-card-title style = "text-align:center;" class="text-danger">
+                {{c.courseId}}-{{c.courseName}}
+            </mat-card-title>
+            <mat-card-content class="text-dark">
+                <ul>
+                    <li>Technology Used-{{c.technology}}</li>
+                    <li>Time-{{c.courseTenure}} Months</li>
+                    <li>Certification-{{c.certification}}</li>
+                </ul>            
+            </mat-card-content>
+            <mat-grid-list cols="2" rowHeight="40">
+
+            </mat-grid-list>
+            <mat-card-action>
+                <button mat-button mat-raised-button class=".button1 btn-block btn btn-warning" (click)="enroll(c.courseId)">
+                    Enroll
+                </button>
+                <button mat-button mat-raised-button class=".button1 btn-block btn btn-info">
+                    View Details
+                </button>
+            </mat-card-action>
+        </mat-card>
+    </div>
+    </div>  
+</div>  
+
+<p>
+    <mat-toolbar>
+      <span class="text-center">Enrolled Courses</span>
+    </mat-toolbar>
+</p>

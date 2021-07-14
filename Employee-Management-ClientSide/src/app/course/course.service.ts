@@ -7,13 +7,26 @@ import { map } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class CourseService {
+  
 
   employees: any = [];
   courses: any[]
   selectedCourses: any = [];
+
+  url = "http://localhost:3000/courses";
+  url1 = "http://localhost:3000/courses/empid/cid";
   constructor(private http: HttpClient) {
     
   }
+
+  getCourses(): Observable<any> {
+    // console.log(<Observable<any>>this.http.get(this.url))
+    return <Observable<any>>this.http.get(this.url);
+  }
+
+  // enroll(id: string): Observable<any> {
+  //   // return <Observable<any>>this.http.get(this.url);
+  // }
 
 
 

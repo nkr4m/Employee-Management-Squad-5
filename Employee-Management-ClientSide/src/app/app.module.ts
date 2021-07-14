@@ -20,6 +20,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
 import { CourseComponent } from './course/course.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -31,14 +32,13 @@ import { CourseComponent } from './course/course.component';
     HomeComponent,
     EmployeeComponent,
     CourseComponent
-   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,ReactiveFormsModule,
     BrowserAnimationsModule,FlexLayoutModule,MatButtonModule,MatCardModule,MatFormFieldModule,MatInputModule,
     MatToolbarModule,ReactiveFormsModule,MatIconModule,MatSnackBarModule,HttpClientModule,NgxPaginationModule,
-    FormsModule
+    FormsModule,CommonModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

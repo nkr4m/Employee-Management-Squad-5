@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
-
+import {MatButtonModule} from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CourseService } from './course.service';
 
 @Component({
   selector: 'app-course',
@@ -16,16 +17,26 @@ export class CourseComponent implements OnInit {
   pageTitle = 'courses';
 
  
- constructor(private router:Router, private _snackBar: MatSnackBar){}
+ constructor(private router:Router, private _snackBar: MatSnackBar, private cservice:CourseService){}
 
+ errorMessage="";
+ courses=[];
+ id="";
   ngOnInit() {
+    this.cservice.getCourses().subscribe(
+      (success) => {
+              this.courses = success
+              // console.log(this.courses);
 
+              
+            },
+            (failure) => {
+              this.errorMessage = failure.error.message;
+            }
+    ) 
   }
 Search(){
   
-}
-getDetails(){
-    
 }
 openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -37,8 +48,16 @@ openSnackBar(message: string, action: string) {
   }
 enroll(){
     this.openSnackBar('Enrolled successfully', 'OK');
-    this.router.navigate(['/employee']);
-
+    this.id=localStorage.getItem("email");
+    // this.router.navigate(['/employee']);
+    // this.cservice.enroll(this.id).subscribe(
+    //   (success) => {
+    //           this.courses = success
+    //         },
+    //         (failure) => {
+    //           this.errorMessage = failure.error.message;
+    //         }
+    // )
 }
 
 }
