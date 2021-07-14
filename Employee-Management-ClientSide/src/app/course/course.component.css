@@ -1,0 +1,18 @@
+
+.whole{
+    padding:20px;
+}
+
+.button{
+    background-color: blueviolet;
+}
+
+mat-card{
+    background-color: white;
+    color: black;
+    height:350px;
+}
+
+.img{
+    height:200px;
+}

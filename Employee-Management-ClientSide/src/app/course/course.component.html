@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]=" '/home'" style="color:white;">Employee Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav> 
+ 
+<div class="whole">
+    <div fxlayout="row wrap" fxLayoutGap="16px">
+        <div fxFlex="25">
+            <mat-card class="content mat-elevation-z6">
+                <mat-card-header>
+                <mat-card-title>
+                    Java 
+                </mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="./../assets/java.jpg" class="img">
+                <mat-card-content>
+                   <p>Basics of Java</p> 
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button class="button" mat-raised-button (click)="getDetails()" >View details</button>
+                    <button class="button" mat-raised-button (click)="enroll()">Enroll</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+            <div fxFlex="25">
+                <mat-card class="content mat-elevation-z6">
+                    <mat-card-header>
+                    <mat-card-title>
+                        Mysql
+                    </mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="./../assets/mysql.png" class="img">
+                    <mat-card-content>
+                       <p>Basics of mysql</p> 
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <button class="button" mat-raised-button >View details</button>
+                        <button class="button" mat-raised-button (click)="enroll()" >Enroll</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <div fxFlex="25">
+                <mat-card class="content mat-elevation-z6">
+                    <mat-card-header>
+                    <mat-card-title>
+                        React
+                    </mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="./../assets/React.jpg" class="img">
+                    <mat-card-content>
+                       <p>Basics of React</p> 
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <button class="button" mat-raised-button >View details</button>
+                        <button class="button" mat-raised-button (click)="enroll()">Enroll</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <div fxFlex="25">
+                <mat-card class="content mat-elevation-z6">
+                    <mat-card-header>
+                    <mat-card-title>
+                        Spring boot
+                    </mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="./../assets/spring.jpg" class="img">
+                    <mat-card-content>
+                       <p>Basics of Spring boot</p> 
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <button class="button" mat-raised-button >View details</button>
+                        <button class="button" mat-raised-button (click)="enroll()">Enroll</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <div fxFlex="25">
+                <mat-card class="content mat-elevation-z6">
+                    <mat-card-header>
+                    <mat-card-title>
+                        Angular
+                    </mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="./../assets/ang.png" class="img">
+                    <mat-card-content>
+                       <p>Basics of Angular</p> 
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <button class="button" mat-raised-button >View details</button>
+                        <button class="button" mat-raised-button (click)="enroll()" >Enroll</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        
+    </div>
+
+</div>

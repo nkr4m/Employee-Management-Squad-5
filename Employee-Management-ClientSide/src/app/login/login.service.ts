@@ -7,10 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  url = "http://localhost:8082/login";
+  url = "http://localhost:3000/login";
   constructor(private http: HttpClient) { }
 
   login(data: any): Observable<any> {
     return <Observable<any>>this.http.post(this.url, data);
+  }
+
+  loggedIn(){
+    return true;
   }
 }

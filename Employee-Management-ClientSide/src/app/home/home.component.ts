@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isShown = false;
-    this.email = sessionStorage.getItem('name')
+    this.email = localStorage.getItem('email')
     if (this.email) {
       this.userLoggedIn = true;
     } else {
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-    this.email = sessionStorage.getItem('name');
+    this.email = sessionStorage.getItem('email');
   }
 
   reload(){
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
 
 // to signout from a profile
   signout() {
-    sessionStorage.clear()
+    localStorage.clear()
     this.ngOnInit()
     this.openSnackBar('Logged out successfully', 'OK');
     this.router.navigate(['/home'])

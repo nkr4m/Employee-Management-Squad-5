@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { LoginService } from './login.service';
@@ -11,7 +11,7 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: any;
+  loginForm: FormGroup;
   hide:boolean=true;
   registerPage: boolean = false;
   errorMessage: null;
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group(
       {
+        emoloyeeId: [Validators.required],
         email: ['',[Validators.required,Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
         password: ['',[Validators.required,Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/)]]
       }
@@ -30,29 +31,39 @@ export class LoginComponent implements OnInit {
   }
  
 login(){
-  this.validateEmail(this.loginForm.value.email)
+  // this.validateEmail(this.loginForm.value.email)
   
-  this.loginService.login(this.loginForm.value).subscribe(
-    (response) => {
-      sessionStorage.setItem("email", response.email);
-      sessionStorage.setItem("password", response.password);
-      this.openSnackBar('Logged in successfully', 'Ok');
-      if (this.loginForm.value.email === "admin@gmail.com" && this.loginForm.value.password === "Admin@123") {
-        this.router.navigate(['/home'])
-      }
-      else {
-        this.router.navigate(['/register'])
-      }
-      this.errorMessage = null;
-      this.app.reload();
-    },
-    (errorResponse) => {
+  // this.loginService.login(this.loginForm.value).subscribe(
+  //   (response) => {
+  //     sessionStorage.setItem("email", response.email);
+  //     sessionStorage.setItem("password", response.password);
+  //     this.openSnackBar('Logged in successfully', 'Ok');
+  //     if (this.loginForm.value.email === "admin@gmail.com" && this.loginForm.value.password === "Admin@123") {
+  //       this.router.navigate(['/home'])
+  //     }
+  //     else {
+  //       this.router.navigate(['/register'])
+  //     }
+  //     this.errorMessage = null;
+  //     this.app.reload();
+  //   },
+  //   (errorResponse) => {
 
-      this.errorMessage = errorResponse.error.message;
-      sessionStorage.clear();
-    }
+  //     this.errorMessage = errorResponse.error.message;
+  //     sessionStorage.clear();
+  //   }
 
-  )
+  // )
+ var res = this.loginService.loggedIn()
+ if(res){
+  //  localStorage.setItem("employeeId",this.loginForm.employeeId);
+   localStorage.setItem("email",this.loginForm.value.email);
+   localStorage.getItem("email");
+   localStorage.setItem("password",this.loginForm.value.password);
+  this.router.navigate(['/home']);
+ }else{
+   alert("invalid user");
+ }
 
 }
 
@@ -74,12 +85,6 @@ openSnackBar(message: string, action: string) {
     horizontalPosition: "center"
 
   });
-}
-
-getRegisterPage() {
-  this.registerPage = true;
-
-  this.router.navigate(['/register'])
 }
   home(){
     this.homePage = true;
