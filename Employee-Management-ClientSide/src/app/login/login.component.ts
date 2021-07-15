@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   hide:boolean=true;
   registerPage: boolean = false;
-  errorMessage: null;
+  errorMessage: string;
   homePage: boolean=false;
   blockedDocument:boolean=false;
   submit:boolean=false;
@@ -33,34 +33,26 @@ export class LoginComponent implements OnInit {
   }
  
 login():void{
-  // this.validateEmail(this.loginForm.value.email)
-  this.blockedDocument=true;
+  
+  
   this.submit=true;
   this.loginService.login(this.loginForm.value).subscribe(
-    (response) => {
-      console.log(response);
-      this.blockedDocument=false;
-    // sessionStorage.setItem("empId",response.empId);
-    //  sessionStorage.setItem("password", response.password);
-    //  let password = sessionStorage.getItem("password")
-    //  let empId = sessionStorage.getItem("empId")
-     //console.log(sessionStorage.getItem("empId"))
-      this.openSnackBar('Logged in successfully', 'Ok');
-
-      if (response) {
+    (data) => {
+      console.log(data);
+      if (data) {
         this.loginService.empId = this.loginForm.value.empId;
+        this.openSnackBar('Logged In Succesfully', 'OK');
         this.router.navigate(['/home'])
       }
       else {
+        alert("Invalid Employee Id or password");
         this.router.navigate(['/login'])
       }
-      this.errorMessage = null;
-      this.app.reload();
+      this.errorMessage = "Invalid Employee Id or Password";
+      this.submit=false;
     },
     (errorResponse) => {
-
-      this.errorMessage = errorResponse.error.message;
-      sessionStorage.clear();
+      console.log(errorResponse.status);
     }
 
   )

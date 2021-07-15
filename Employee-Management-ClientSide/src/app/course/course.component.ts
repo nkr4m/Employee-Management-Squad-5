@@ -71,4 +71,7 @@ viewdetaills(c:any){
   sessionStorage.setItem("courseTech", c.courseName);
   this.router.navigate(['/viewdetails']);
 }
+home(){
+  this.router.navigate(['/home']);
+}
 }

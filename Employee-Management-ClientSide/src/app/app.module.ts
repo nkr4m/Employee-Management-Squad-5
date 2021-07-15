@@ -15,7 +15,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
-import { EmployeeComponent } from './employee/employee.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
@@ -32,7 +31,6 @@ import { ProfileComponent } from './profile/profile.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    EmployeeComponent,
     CourseComponent,
     ViewDetailsComponent,
     ProfileComponent

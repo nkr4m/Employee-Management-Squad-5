@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +14,11 @@ export class HomeComponent implements OnInit {
   module = true;
   userLoggedIn: boolean;
   empId: any;
-  constructor(private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private router: Router, private _snackBar: MatSnackBar,private loginService:LoginService) { }
 
   ngOnInit() {
     this.isShown = false;
-    this.empId = sessionStorage.getItem('empId')
+    this.empId = this.loginService.empId
     console.log(this.empId)
     if (this.empId) {
       this.userLoggedIn = true;
@@ -40,10 +41,9 @@ export class HomeComponent implements OnInit {
 
 // to signout from a profile
   signout() {
-    sessionStorage.clear()
     this.ngOnInit()
     this.openSnackBar('Logged out successfully', 'OK');
-    this.router.navigate(['/home'])
+    this.router.navigate(['/login'])
 
   }
 

@@ -2,16 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { Course } from '../course/course';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ViewdetailsService {
 
-  private url = "http://localhost:8082/employee-api/"
+
+export class ViewdetailsService {
+  courseTech:string;
+
+  private url = "http://localhost:8080/employee-api/GET/"
   constructor(private http:HttpClient) { }
 
-  viewDetails(courseTech: string): Observable<any>{
-    return this.http.get(this.url+courseTech)
+  viewDetails(courseName: string): Observable<any>{
+    return this.http.get(this.url+courseName)
   }
 }

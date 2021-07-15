@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]=" '/course'" style="color:white;">Employee Home</a>
+    <a class="navbar-brand" (click)="home()" style="color:white;">Employee Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
   </nav> 
-
+<!-- 
 <div>
     <h1 class="text-center text-Primary">
          Employee Profile
@@ -12,7 +12,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-3" >
+    <div class="col-md-3" *ngFor = "let employee of employees">
         <div fxlayout="row wrap" fxLayoutGap="16px">
         <mat-card class="example-card card-shadow content mat-elevation-z6 " >
             <mat-card-title style = "text-align:center;" class="text-danger">
@@ -29,4 +29,73 @@
         </mat-card>
     </div>
     </div>  
-</div>  
+</div>   -->
+
+
+
+
+
+<div class="section">
+    <div class="container">
+      <h1>Employee Profile</h1>
+      <div class="row profile">
+        <div class="col-md-3">
+          <div class="profile-sidebar">
+              <div>
+                <mat-icon>person</mat-icon>
+              </div>
+        
+            <div class="profile-usertitle">
+              <div class="profile-usertitle-name">
+                <h3>{{employee?.firstName}} {{employee?.lastName}}</h3>
+              </div>
+              <div class="profile-usertitle-job">
+                Developer
+              </div>
+            </div>
+            <br>
+            <div class="portlet light bordered">
+              <div class="row list-separated profile-stat">
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                  <div class="uppercase profile-stat-title"> {{employee?.training.length}} </div>
+                  <div class="uppercase profile-stat-text"> Enrolled </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                  <div class="uppercase profile-stat-title"> {{employee?.training.length}} </div>
+                  <div class="uppercase profile-stat-text"> Completed </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                  <div class="uppercase profile-stat-title"> 0 </div>
+                  <div class="uppercase profile-stat-text"> Pending </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="profile-desc-title">Details</h4>
+                <span class="profile-desc-text">
+                  Employee ID: {{employee?.empId}}
+                  <br>
+                  Employee Name: {{employee?.firstName}} {{employee?.lastName}}
+                  <br>
+                  Location: {{employee?.location}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="profile-content" *ngIf="!flag">
+            <h2><span>Certification</span></h2>
+            <div class="card card-1" *ngFor="let t of employee?.training">
+              <div class="card-body">
+                <h1>{{t.courseName}}</h1> <span class="badge bg-success" style="padding: 5px;">Completed</span> {{t.dateCompleted}}
+                <br>
+                <br>
+                <br>
+                Hours Spent: {{t.hoursSpent}} hrs
+                <br>
+                Score: {{t.score}}
+                <br>
+              </div>
+            </div>
+            <br>
+          </div>

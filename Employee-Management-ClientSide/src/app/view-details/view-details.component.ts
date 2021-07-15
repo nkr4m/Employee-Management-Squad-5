@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee/employee';
+import { Course } from '../course/course';
+import { Employee } from '../home/employee';
 import { ViewdetailsService } from './viewdetails.service';
 
 @Component({
@@ -8,13 +9,15 @@ import { ViewdetailsService } from './viewdetails.service';
   styleUrls: ['./view-details.component.css']
 })
 export class ViewDetailsComponent implements OnInit {
+  courseName: any;
 
   constructor(private service : ViewdetailsService) { }
-  employees:any;
-  coursetech:any
+  employees:Course;
+  // coursetech:any
   ngOnInit() {
-    this.coursetech = sessionStorage.getItem("courseTech")
-    this.service.viewDetails(this.coursetech).subscribe(
+    this.courseName = this.service.courseTech
+    console.log(this.courseName);
+    this.service.viewDetails(this.courseName).subscribe(
       data=>{
         this.employees = data;
       }
