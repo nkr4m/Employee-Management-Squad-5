@@ -1,13 +1,13 @@
 export class Course {
     courseId: number; 
     courseName:string;
-    coursestartdate: string ; 
-    courseenddate: string ; 
+    courseStartDate: string ; 
+    courseEndDate: string ; 
 
-    constructor(courseId: number, coursename: string, coursestartdate : string,  courseenddate : string) {
-      this.courseId = courseId;
+    constructor(courseID: number, coursename: string, coursestartdate : string,  courseenddate : string) {
+      this.courseId = courseID;
       this.courseName = coursename;
-      this.coursestartdate=coursestartdate;
-      this.courseenddate=courseenddate;
+      this.courseStartDate=coursestartdate;
+      this.courseEndDate=courseenddate;
     }
   }

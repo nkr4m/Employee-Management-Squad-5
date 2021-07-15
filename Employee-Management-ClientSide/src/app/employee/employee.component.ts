@@ -55,16 +55,13 @@ export class EmployeeComponent implements OnInit {
     // );
     this.employeeService.loggedIn()
       
-       var firstName = localStorage.getItem("firstName");
-        var lastName = localStorage.getItem("lastName");
+        localStorage.getItem("firstName");
+        localStorage.getItem("lastName");
     
   }
-
- 
 home(){
-  this.router.navigate(["/home"])
+  this.router.navigate(['/home'])
 }
-
 }
 
 

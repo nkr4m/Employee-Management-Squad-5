@@ -5,6 +5,8 @@ import { CourseComponent } from './course/course.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ViewDetailsComponent } from './view-details/view-details.component';
 
 
 
@@ -19,6 +21,7 @@ const routes: Routes = [
      component: HomeComponent,
      canActivate: [AuthGuard]
     },
+ 
   {
     path:'login',
    component: LoginComponent
@@ -31,6 +34,16 @@ const routes: Routes = [
   {
     path:'course',
     component: CourseComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'viewdetails',
+    component: ViewDetailsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'profile',
+    component: ProfileComponent,
     canActivate: [AuthGuard]
   },
   {

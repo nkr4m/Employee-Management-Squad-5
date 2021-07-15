@@ -10,14 +10,9 @@
 mat-card{
     background-color: white;
     color: black;
+    height:350px;
 }
 
 .img{
     height:200px;
 }
-
-.example-card {
-    max-width: 400px;
-  }
-
-  .button1 {width: 100%;}

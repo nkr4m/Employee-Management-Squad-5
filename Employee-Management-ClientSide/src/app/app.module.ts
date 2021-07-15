@@ -21,6 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
 import { CourseComponent } from './course/course.component';
 import { CommonModule } from '@angular/common';
+import { ViewDetailsComponent } from './view-details/view-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -31,14 +33,17 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     HomeComponent,
     EmployeeComponent,
-    CourseComponent
+    CourseComponent,
+    ViewDetailsComponent,
+    ProfileComponent
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,ReactiveFormsModule,
     BrowserAnimationsModule,FlexLayoutModule,MatButtonModule,MatCardModule,MatFormFieldModule,MatInputModule,
     MatToolbarModule,ReactiveFormsModule,MatIconModule,MatSnackBarModule,HttpClientModule,NgxPaginationModule,
-    FormsModule,CommonModule
+    FormsModule,MatCardModule,CommonModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

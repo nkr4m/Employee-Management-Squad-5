@@ -12,13 +12,13 @@ export class HomeComponent implements OnInit {
   isShown: boolean = false
   module = true;
   userLoggedIn: boolean;
-  email: any;
+  employeeID: any;
   constructor(private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.isShown = false;
-    this.email = localStorage.getItem('email')
-    if (this.email) {
+    this.employeeID = localStorage.getItem('employeeID')
+    if (this.employeeID) {
       this.userLoggedIn = true;
     } else {
       this.userLoggedIn = false;
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-    this.email = sessionStorage.getItem('email');
+    this.employeeID = sessionStorage.getItem('employeeID');
   }
 
   reload(){

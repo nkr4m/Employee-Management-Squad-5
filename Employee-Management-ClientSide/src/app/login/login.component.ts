@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group(
       {
-        emoloyeeId: [Validators.required],
-        email: ['',[Validators.required,Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
+        employeeID: ['',[Validators.required,Validators.minLength(6)]],
+        // email: ['',[Validators.required,Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
         password: ['',[Validators.required,Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/)]]
       }
     );
@@ -33,62 +33,61 @@ export class LoginComponent implements OnInit {
 login(){
   // this.validateEmail(this.loginForm.value.email)
   
-  // this.loginService.login(this.loginForm.value).subscribe(
-  //   (response) => {
-  //     sessionStorage.setItem("email", response.email);
-  //     sessionStorage.setItem("password", response.password);
-  //     this.openSnackBar('Logged in successfully', 'Ok');
-  //     if (this.loginForm.value.email === "admin@gmail.com" && this.loginForm.value.password === "Admin@123") {
-  //       this.router.navigate(['/home'])
-  //     }
-  //     else {
-  //       this.router.navigate(['/register'])
-  //     }
-  //     this.errorMessage = null;
-  //     this.app.reload();
-  //   },
-  //   (errorResponse) => {
+  this.loginService.login(this.loginForm.value).subscribe(
+    (response) => {
+    let empID = sessionStorage.setItem("employeeID", response.employeeID);
+     let password = sessionStorage.setItem("password", response.password);
+      this.openSnackBar('Logged in successfully', 'Ok');
+      if (this.loginForm.value.employeeID === empID && this.loginForm.value.password === password) {
+        this.router.navigate(['/home'])
+      }
+      else {
+        this.router.navigate(['/login'])
+      }
+      this.errorMessage = null;
+      this.app.reload();
+    },
+    (errorResponse) => {
 
-  //     this.errorMessage = errorResponse.error.message;
-  //     sessionStorage.clear();
-  //   }
+      this.errorMessage = errorResponse.error.message;
+      sessionStorage.clear();
+    }
 
-  // )
- var res = this.loginService.loggedIn()
- if(res){
-  //  localStorage.setItem("employeeId",this.loginForm.employeeId);
-   localStorage.setItem("email",this.loginForm.value.email);
-   localStorage.getItem("email");
-   localStorage.setItem("password",this.loginForm.value.password);
-  this.router.navigate(['/home']);
- }else{
-   alert("invalid user");
- }
-
+  )
 }
+//  var res = this.loginService.loggedIn();
+//  if(res){
+//   //  localStorage.setItem("employeeId",this.loginForm.employeeId);
+//    localStorage.setItem("employeeID",this.loginForm.value.employeeID);
+//    let a = localStorage.getItem("employeeID");
+//    console.log(a);
+//    localStorage.setItem("password",this.loginForm.value.password);
+//   this.router.navigate(['/home']);
+//  }else{
+//    alert("invalid user");
+//  }
 
-validateEmail(inputtxt: string) {
-  var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (inputtxt.match(email)) {
-    return this.loginForm.value.email = inputtxt;
-  }
-  else{
-    return null;
-  }
-}
+// }
+
+// validateEmail(inputtxt: string) {
+//   var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+//   if (inputtxt.match(email)) {
+//     return this.loginForm.value.email = inputtxt;
+//   }
+//   else{
+//     return null;
+//   }
+// }
 
 openSnackBar(message: string, action: string) {
   this._snackBar.open(message, action, {
     duration: 5000,
-    verticalPosition: 'top',
+    verticalPosition: 'bottom',
     panelClass: ['snackbar-position'],
     horizontalPosition: "center"
 
   });
 }
-  home(){
-    this.homePage = true;
-    this.router.navigate(['/home']);
-  }
+
 
 }

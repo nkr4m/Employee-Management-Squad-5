@@ -5,16 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class ProfileService {
 
-  url = "http://localhost:8082/login";
+  private url = "#";
   constructor(private http: HttpClient) { }
 
-  login(data: any): Observable<any> {
-    return <Observable<any>>this.http.post(this.url, data);
-  }
-
-  loggedIn(){
-    return true;
+  profileDetails(id:any): Observable<any>{
+    return this.http.get(this.url+id);
   }
 }
