@@ -53,7 +53,7 @@ openSnackBar(message: string, action: string) {
  }
 enroll(c:any){
    this.openSnackBar('Enrolled successfully', 'OK');
-   this.id=localStorage.getItem("employeeID");
+   this.id=sessionStorage.getItem("empId");
   // this.id=this.courseID;
   console.log(this.id);
    // this.router.navigate(['/employee']);

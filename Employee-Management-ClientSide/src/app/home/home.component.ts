@@ -12,13 +12,14 @@ export class HomeComponent implements OnInit {
   isShown: boolean = false
   module = true;
   userLoggedIn: boolean;
-  employeeID: any;
+  empId: any;
   constructor(private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.isShown = false;
-    this.employeeID = localStorage.getItem('employeeID')
-    if (this.employeeID) {
+    this.empId = sessionStorage.getItem('empId')
+    console.log(this.empId)
+    if (this.empId) {
       this.userLoggedIn = true;
     } else {
       this.userLoggedIn = false;
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-    this.employeeID = sessionStorage.getItem('employeeID');
+    this.empId = sessionStorage.getItem('empId');
   }
 
   reload(){
@@ -39,7 +40,7 @@ export class HomeComponent implements OnInit {
 
 // to signout from a profile
   signout() {
-    localStorage.clear()
+    sessionStorage.clear()
     this.ngOnInit()
     this.openSnackBar('Logged out successfully', 'OK');
     this.router.navigate(['/home'])

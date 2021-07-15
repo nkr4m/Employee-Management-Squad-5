@@ -35,9 +35,9 @@
                 <mat-icon>person</mat-icon>
             </button>
         </ng-template>
-        <button mat-button [routerLink]="['/login']" class="nav-link" (click)="login()" *ngIf="!employeeID" matTooltip="Login"
+        <button mat-button [routerLink]="['/login']" class="nav-link" (click)="login()" *ngIf="!empId" matTooltip="Login"
             matTooltipPosition="below" matTooltipClass="mat-tooltip">SIGN IN</button>
-        <button mat-button *ngIf="employeeID" class="nav-link" (click)="signout()">SIGN OUT</button>
+        <button mat-button *ngIf="empId" class="nav-link" (click)="signout()">SIGN OUT</button>
         <br>
     </div>
 </mat-toolbar>

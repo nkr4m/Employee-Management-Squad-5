@@ -13,13 +13,13 @@ export class AppComponent  implements OnInit {
   isShown: boolean = false
   module = true;
   userLoggedIn: boolean;
-  email: any;
+  empId: any;
   constructor(private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.isShown = false;
-    this.email = sessionStorage.getItem('name')
-    if (this.email) {
+    this.empId = sessionStorage.getItem('empId')
+    if (this.empId) {
       this.userLoggedIn = true;
     } else {
       this.userLoggedIn = false;
@@ -28,7 +28,7 @@ export class AppComponent  implements OnInit {
   }
 
   login() {
-    this.email = sessionStorage.getItem('name');
+    this.empId = sessionStorage.getItem('empId');
   }
 
   reload(){

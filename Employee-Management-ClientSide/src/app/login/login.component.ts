@@ -16,29 +16,39 @@ export class LoginComponent implements OnInit {
   registerPage: boolean = false;
   errorMessage: null;
   homePage: boolean=false;
- 
+  blockedDocument:boolean=false;
+  submit:boolean=false;
 
-  constructor(private _snackBar: MatSnackBar,private router: Router,private fb: FormBuilder,private loginService:LoginService,private app: AppComponent) { }
+  constructor(private _snackBar: MatSnackBar,private router: Router,private fb: FormBuilder,private loginService:LoginService,private app: AppComponent
+    ) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group(
       {
-        employeeID: ['',[Validators.required,Validators.minLength(6)]],
+        empId: ['',[Validators.required,Validators.minLength(4)]],
         // email: ['',[Validators.required,Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
         password: ['',[Validators.required,Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/)]]
       }
     );
   }
  
-login(){
+login():void{
   // this.validateEmail(this.loginForm.value.email)
-  
+  this.blockedDocument=true;
+  this.submit=true;
   this.loginService.login(this.loginForm.value).subscribe(
     (response) => {
-    let empID = sessionStorage.setItem("employeeID", response.employeeID);
-     let password = sessionStorage.setItem("password", response.password);
+      console.log(response);
+      this.blockedDocument=false;
+    // sessionStorage.setItem("empId",response.empId);
+    //  sessionStorage.setItem("password", response.password);
+    //  let password = sessionStorage.getItem("password")
+    //  let empId = sessionStorage.getItem("empId")
+     //console.log(sessionStorage.getItem("empId"))
       this.openSnackBar('Logged in successfully', 'Ok');
-      if (this.loginForm.value.employeeID === empID && this.loginForm.value.password === password) {
+
+      if (response) {
+        this.loginService.empId = this.loginForm.value.empId;
         this.router.navigate(['/home'])
       }
       else {

@@ -4,9 +4,9 @@
         <form fxLayoutAlign="stretch" fxLayout="column" class="form" name="loginForm" [formGroup]="loginForm" (ngsubmit)="login()"  >
             <mat-form-field>
               <mat-label>EmployeeID</mat-label>
-              <input matInput type="text" placeholder="EmployeeID" name="employeeID" formControlName="employeeID" required>
-              <mat-error *ngIf="loginForm.controls.employeeID.errors?.required" class="text-danger">Field Required</mat-error>
-              <mat-error *ngIf="loginForm.controls.employeeID.errors?.minLength" class="text-danger" id="employeeIDError">Enter valid Employee ID</mat-error>
+              <input matInput type="text" placeholder="EmployeeID" name="empId" formControlName="empId" required>
+              <mat-error *ngIf="loginForm.controls.empId.errors?.required" class="text-danger">Field Required</mat-error>
+              <mat-error *ngIf="loginForm.controls.empId.errors?.minLength" class="text-danger" id="empIdError">Enter valid Employee ID</mat-error>
             </mat-form-field>
 
             <br>

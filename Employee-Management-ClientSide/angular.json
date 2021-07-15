@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "Employee-Management-ClientSide"
+  "defaultProject": "Employee-Management-ClientSide",
+  "cli": {
+    "analytics": "6f4ed4de-50ed-43a0-867e-acbbef4fe775"
+  }
 }
