@@ -16,13 +16,14 @@ public class EmployeeAPI {
 	
 	@Autowired
 	private EmployeeService service;
-
+	//TO-DO: request mapping should not be get use /employee
 	@GetMapping("/get")
 	public ResponseEntity<List<EmployeeDTO>> getAllEmployee(){
 		List<EmployeeDTO> list=service.getAllEmployees();
 		return new ResponseEntity<List<EmployeeDTO>>(list,HttpStatus.OK);
 	}
 
+	//TO-DO: use /employee/{employeeId}
 	@GetMapping("/get/{employeeId}")
 	public ResponseEntity<EmployeeDTO> getClassRoom(@PathVariable Integer employeeId){
 		EmployeeDTO dto=service.getEmployee(employeeId);
