@@ -1,0 +1,24 @@
+drop database if exists db_emp_course;
+create database db_emp_course;
+use  db_emp_course;
+
+
+create table course(
+   course_id int auto_increment PRIMARY KEY,
+   course_name varchar(100),
+   course_description varchar(1000)
+
+);
+
+
+insert into course values (1, "Angular", "Angular is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your applications.");
+insert into course values (2, "React", "React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”");
+insert into course values (3, "Spring Boot", "Spring Boot is an open source Java-based framework used to create a micro Service. It is developed by Pivotal Team and is used to build stand-alone and production ready spring applications.");
+insert into course values (4, "Django", "Django is a high-level Python web framework that enables rapid development of secure and maintainable websites. Built by experienced developers, Django takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel.");
+insert into course values (5, "MySQl", "MySQL is an Oracle-backed open source relational database management system (RDBMS) based on Structured Query Language (SQL). ... Although it can be used in a wide range of applications, MySQL is most often associated with web applications and online publishing.");
+
+
+commit;
+
+
+select * from course;
