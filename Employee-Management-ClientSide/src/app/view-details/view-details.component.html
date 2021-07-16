@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]=" '/course'" style="color:white;">Employee Home</a>
+    <a class="navbar-brand" (click)="home()" style="color:white;">Employee Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,15 +16,8 @@
         <div fxlayout="row wrap" fxLayoutGap="16px">
         <mat-card class="example-card card-shadow content mat-elevation-z6 " >
             <mat-card-title style = "text-align:center;" class="text-danger">
-              {{e.empId}}--{{e.firstname}}-{{e.lastname}}
+              {{e.firstName}}-{{e.lastName}}
             </mat-card-title>
-            <mat-card-content class="text-dark">
-                <ul>
-                    <li>Age-{{e.age}}</li>
-                    <li>Time-{{e.location}} Months</li>
-                    <li>Email-{{e.emailId}}</li>
-                </ul>            
-            </mat-card-content>
             
         </mat-card>
     </div>

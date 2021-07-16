@@ -60,7 +60,7 @@ enroll(c:any){
    this.service.enroll(this.id,c).subscribe(
      (success) => {
              this.courses = success
-             console.log(this.courses)
+             //console.log(this.courses)
            },
            (failure) => {
              this.errorMessage = failure.error.message;
@@ -69,6 +69,7 @@ enroll(c:any){
 }
 viewdetaills(c:any){
   sessionStorage.setItem("courseTech", c.courseName);
+  console.log(sessionStorage.getItem("CourseTech"));
   this.router.navigate(['/viewdetails']);
 }
 home(){
