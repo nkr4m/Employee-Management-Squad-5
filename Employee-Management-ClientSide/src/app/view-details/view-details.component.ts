@@ -12,7 +12,7 @@ export class ViewDetailsComponent implements OnInit {
   courseName: any;
 
   constructor(private service : ViewdetailsService) { }
-  employees:Course;
+  employees:any;
   // coursetech:any
   ngOnInit() {
     this.courseName = this.service.courseTech

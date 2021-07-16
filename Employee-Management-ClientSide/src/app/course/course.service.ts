@@ -11,7 +11,7 @@ employees: any = [];
 courses: Course2[]
 selectedCourses: any = [];
 
-url = "http://localhost:3000/courses/";
+url = "http://localhost:8085/course-api/GET";
 url1 = "http://localhost:3000/courses/1";
 constructor(private http: HttpClient) {
   

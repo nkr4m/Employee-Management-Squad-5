@@ -24,7 +24,7 @@ export class CourseComponent implements OnInit {
 
 
 errorMessage="";
-courses:Course2[];
+courses:any;
 id:any;
 
  ngOnInit() {
