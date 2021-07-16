@@ -1,0 +1,26 @@
+drop database if exists db_emp_cred;
+create database db_emp_cred;
+use  db_emp_cred;
+
+
+create table employee_cred(
+   cred_id int auto_increment PRIMARY KEY,
+   emp_id int,
+   password varchar(100)
+);
+
+
+insert into employee_cred values (1,5401, "Infy@5401");
+insert into employee_cred values (2,5402, "Infy@5402");
+insert into employee_cred values (3,5403, "Infy@5403");
+insert into employee_cred values (4,5404, "Infy@5404");
+insert into employee_cred values (5,5405, "Infy@5405");
+insert into employee_cred values (6,5406, "Infy@5406");
+insert into employee_cred values (7,5407, "Infy@5407");
+insert into employee_cred values (8,5408, "Infy@5408");
+
+
+commit;
+
+
+select * from employee_cred;
